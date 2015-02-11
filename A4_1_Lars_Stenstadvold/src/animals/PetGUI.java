@@ -18,7 +18,11 @@ public class PetGUI extends JFrame {
 	private JPanel contentPane;
 	private JTextField textFieldHuman;
 	private JTextField textFieldDog;
+	private JTextField textFieldInfo;
 	private Human human;
+	private Dog dog;
+	private JTextField textFieldError;
+
 
 	/**
 	 * Launch the application.
@@ -64,7 +68,12 @@ public class PetGUI extends JFrame {
 		JButton btnNewHuman = new JButton("New Human");
 		btnNewHuman.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Human newHuman = new Human(textFieldHuman.getText());
+				textFieldError.setText("");
+				if(textFieldHuman.getText().length() >= 3){
+				human = new Human(textFieldHuman.getText());//create new human with the name given in textFieldHuman
+				}else{
+					textFieldError.setText("Name is too short");
+				}
 			}
 		});
 		btnNewHuman.setBounds(223, 35, 117, 29);
@@ -73,30 +82,40 @@ public class PetGUI extends JFrame {
 		JButton btnBuyDog = new JButton("Buy Dog");
 		btnBuyDog.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				dog = new Dog(textFieldDog.getText()); //create new dog with the name given in textFieldDog
+				human.buyDog(dog);//assigns the dog to the given Human
 			}
 		});
 		btnBuyDog.setBounds(223, 75, 117, 29);
 		contentPane.add(btnBuyDog);
 		
 		JButton btnPrintInfo = new JButton("Print Info");
+		btnPrintInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textFieldInfo.setText(human.getInfo());
+			}
+		});
 		btnPrintInfo.setBounds(223, 116, 117, 29);
 		contentPane.add(btnPrintInfo);
 		
-		JTextArea textAreaInfo = new JTextArea();
-		textAreaInfo.setBounds(17, 165, 415, 47);
-		contentPane.add(textAreaInfo);
+		
 		
 		JLabel lblInfo = new JLabel("Info");
 		lblInfo.setBounds(17, 147, 61, 16);
 		contentPane.add(lblInfo);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(17, 237, 415, 35);
-		contentPane.add(textArea);
-		
 		JLabel lblErrormessage = new JLabel("ErrorMessage");
 		lblErrormessage.setBounds(17, 217, 117, 23);
 		contentPane.add(lblErrormessage);
+		
+		textFieldInfo = new JTextField();
+		textFieldInfo.setBounds(17, 175, 415, 28);
+		contentPane.add(textFieldInfo);
+		textFieldInfo.setColumns(10);
+		
+		textFieldError = new JTextField();
+		textFieldError.setBounds(17, 244, 415, 28);
+		contentPane.add(textFieldError);
+		textFieldError.setColumns(10);
 	}
 }

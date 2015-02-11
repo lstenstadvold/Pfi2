@@ -11,5 +11,4 @@ public class Dog {
 	public String getName(){
 		return name;
 	}
-	
 }
