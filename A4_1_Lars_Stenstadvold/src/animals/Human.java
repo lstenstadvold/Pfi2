@@ -16,8 +16,10 @@ public class Human {
 	}
 	public String getInfo(){
 		String info;
-		if(dog == null && dog.getName().equals("")){ //if the human doesn't own a dog, or owns an "empty" dog
+		if(dog == null) { //if the human doesn't own a dog or if dog has no name
 			info = this.name + " does not own a dog.";
+		}else if(dog.getName().isEmpty()){ //checks if the dog does not have a name
+			info = this.name + " owns a dog who doesn't even have a name.";
 		}else{
 			info = this.name + " owns a dog named " + dog.getName();
 		}

@@ -69,6 +69,7 @@ public class PetGUI extends JFrame {
 		btnNewHuman.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textFieldError.setText("");
+				textFieldInfo.setText("");
 				if(textFieldHuman.getText().length() >= 3){
 				human = new Human(textFieldHuman.getText());//create new human with the name given in textFieldHuman
 				}else{
@@ -82,8 +83,12 @@ public class PetGUI extends JFrame {
 		JButton btnBuyDog = new JButton("Buy Dog");
 		btnBuyDog.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dog = new Dog(textFieldDog.getText()); //create new dog with the name given in textFieldDog
-				human.buyDog(dog);//assigns the dog to the given Human
+				if(human != null) { //check if human has been created
+					dog = new Dog(textFieldDog.getText()); //create new dog with the name given in textFieldDog
+					human.buyDog(dog);//assigns the dog to the given Human
+				}else{ 
+					textFieldError.setText("That doggie needs an owner!");
+				}
 			}
 		});
 		btnBuyDog.setBounds(223, 75, 117, 29);
