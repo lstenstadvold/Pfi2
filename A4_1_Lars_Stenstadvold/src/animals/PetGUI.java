@@ -97,7 +97,11 @@ public class PetGUI extends JFrame {
 		JButton btnPrintInfo = new JButton("Print Info");
 		btnPrintInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(human==null){
+					textFieldError.setText("Nobody home!");
+				}else{
 				textFieldInfo.setText(human.getInfo());
+				}
 			}
 		});
 		btnPrintInfo.setBounds(223, 116, 117, 29);
