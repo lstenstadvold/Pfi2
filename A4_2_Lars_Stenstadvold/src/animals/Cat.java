@@ -6,7 +6,7 @@ public class Cat extends Mammal {
 
 	public Cat(String latinName, int numberOfLives) {
 		super(latinName, 5); //sets gestationTime for all cats to 5
-		setFriendlyName("KC"); //all cats get the friendlyName "KC"
+		//setFriendlyName("KC"); //all cats get the friendlyName "KC"
 		this.numberOfLives = numberOfLives;
 	}
 

@@ -56,8 +56,11 @@ public class AnimalsGUI extends JFrame {
 		
 		animalList.add(new Snake("Python regius", true));
 		animalList.add(new Snake("Boa constrictus", false));
-		animalList.add(new Cat("Feline mean", 9));
+		Cat cat = new Cat("Feline mean", 9);
+		cat.setFriendlyName("friendly name"); //sets a friendlyName for cat even though friendlyName is not included in the Cat constructor
+		animalList.add(cat);
 		animalList.add(new Cat("Feline tigris", 1));
+		
 		animalList.add(new Dog("Canis lazynis", true));
 		animalList.add(new Dog("Canis atleticus", "Sporty Spice", false));
 		
