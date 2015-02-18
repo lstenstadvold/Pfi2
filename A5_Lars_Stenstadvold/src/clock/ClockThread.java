@@ -20,10 +20,17 @@ public class ClockThread extends Thread
 	@Override
 	   public void run() {
 		   while (true) {
-			   Thread.sleep(900);
+			   
 			   clockInterface.update(Calendar.getInstance().get(Calendar.HOUR_OF_DAY), Calendar.getInstance().get(Calendar.MINUTE), 
 						   Calendar.getInstance().get(Calendar.SECOND)); 
-			   }
+			   
+			   try {
+				Thread.sleep(900);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		   }
 		  
 	   }
 }

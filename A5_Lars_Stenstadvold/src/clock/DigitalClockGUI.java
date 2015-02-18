@@ -53,7 +53,13 @@ public class DigitalClockGUI extends JFrame {
 		lblTime.setBounds(109, 97, 158, 29);
 		contentPane.add(lblTime);
 		
-		lblTime.setText();
+		/**
+		 *  To set the text to the gui you need to make an instance of this class that can be accessed
+		 *	in the runnable ClockThread. Easiest would be to make a string method that updates the label.
+		 */
+		
+		
+		lblTime.setText("");
 		
 		//lblTime.setText(String.valueOf(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) + ":" +  String.valueOf(Calendar.getInstance().get(Calendar.MINUTE)) + 
 			//	":" + String.valueOf(Calendar.getInstance().get(Calendar.SECOND)));
