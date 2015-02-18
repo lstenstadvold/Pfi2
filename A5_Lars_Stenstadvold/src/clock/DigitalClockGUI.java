@@ -10,11 +10,24 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import java.awt.Color;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DigitalClockGUI extends JFrame {
 
 	private JPanel contentPane;
 	private ClockLogic clockLogic;
+	private JTextField textAlarmHours;
+	private JTextField textAlarmMinutes;
+	public JLabel lblAlarmAt;
+	public JLabel lblShowTime;
+	
+	
 	
 	
 
@@ -42,27 +55,75 @@ public class DigitalClockGUI extends JFrame {
 		clockLogic = new ClockLogic(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 400, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblTime = new JLabel("00:00:00");
-		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTime.setBounds(109, 97, 158, 29);
-		contentPane.add(lblTime);
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.RED);
+		panel.setBounds(221, 246, 173, 126);
+		contentPane.add(panel);
+		panel.setLayout(null);
 		
-		/**
-		 *  To set the text to the gui you need to make an instance of this class that can be accessed
-		 *	in the runnable ClockThread. Easiest would be to make a string method that updates the label.
-		 */
+		JLabel lblHourz = new JLabel("hourz:");
+		lblHourz.setForeground(Color.WHITE);
+		lblHourz.setBounds(30, 12, 40, 16);
+		panel.add(lblHourz);
 		
+		JLabel lblMinitz = new JLabel("minitz:");
+		lblMinitz.setForeground(Color.WHITE);
+		lblMinitz.setBounds(30, 45, 44, 16);
+		panel.add(lblMinitz);
 		
-		lblTime.setText("");
+		textAlarmHours = new JTextField();
+		textAlarmHours.setBounds(82, 6, 56, 28);
+		panel.add(textAlarmHours);
+		textAlarmHours.setColumns(10);
 		
-		//lblTime.setText(String.valueOf(Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) + ":" +  String.valueOf(Calendar.getInstance().get(Calendar.MINUTE)) + 
-			//	":" + String.valueOf(Calendar.getInstance().get(Calendar.SECOND)));
+		textAlarmMinutes = new JTextField();
+		textAlarmMinutes.setBounds(82, 39, 56, 28);
+		panel.add(textAlarmMinutes);
+		textAlarmMinutes.setColumns(10);
+		
+		JButton btnSet = new JButton("set");
+		btnSet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clockLogic.setAlarm(Integer.parseInt(textAlarmHours.getText()),Integer.parseInt(textAlarmMinutes.getText()));
+			}
+		});
+		btnSet.setBounds(6, 73, 73, 47);
+		panel.add(btnSet);
+		
+		JButton btnClr = new JButton("clr");
+		btnClr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clockLogic.clearAlarm();
+			}
+		});
+		btnClr.setBounds(92, 73, 73, 47);
+		panel.add(btnClr);
+		
+		lblAlarmAt = new JLabel("alarm");
+		lblAlarmAt.setForeground(Color.RED);
+		lblAlarmAt.setBounds(221, 229, 113, 16);
+		contentPane.add(lblAlarmAt);
+		
+		lblShowTime = new JLabel("New label");
+		lblShowTime.setHorizontalAlignment(SwingConstants.CENTER);
+		lblShowTime.setBounds(89, 89, 179, 48);
+		contentPane.add(lblShowTime);
+		
 		
 	}
+	
+	public void setTextOnLabel(String time){
+		lblShowTime.setText(time);
+	}
+	
+	public void alarm(boolean activate){
+		
+	}
+
 }

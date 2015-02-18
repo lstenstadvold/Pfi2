@@ -14,16 +14,13 @@ public class ClockThread extends Thread
 	@Override
 	public void update(int hours, int minute, int second) {
 		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
 	   public void run() {
 		   while (true) {
-			   
-			   clockInterface.update(Calendar.getInstance().get(Calendar.HOUR_OF_DAY), Calendar.getInstance().get(Calendar.MINUTE), 
-						   Calendar.getInstance().get(Calendar.SECOND)); 
-			   
+			   clockInterface.update(Calendar.getInstance().get(Calendar.HOUR_OF_DAY), 
+					   Calendar.getInstance().get(Calendar.MINUTE), Calendar.getInstance().get(Calendar.SECOND));
 			   try {
 				Thread.sleep(900);
 			} catch (InterruptedException e) {

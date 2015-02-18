@@ -2,6 +2,5 @@ package clock;
 
 public interface ClockInterface {
 	
-	 void update(int hours, int minute, int second);
-
+	 void update(int hoursIn, int minuteIn, int secondIn);
 }
