@@ -19,11 +19,15 @@ public class ClockLogic
 		alarmHour = hours;
 		alarmMinute = minute;
 		clockGUI.setAlarmText("alarm: " + String.valueOf(alarmHour) + ":" + String.valueOf(alarmMinute));
-		
+		clockGUI.lblAlarmIcon.setVisible(true);
 	}
 	
 	public void clearAlarm() {
-	
+		clockGUI.lblAlarmIcon.setVisible(false);
+		clockGUI.setAlarmText("alarm");
+		clockGUI.alarm(false);
+		alarmHour = 100; // eftersom det aldrig är kl 100 ;)
+		alarmMinute = 100;
 	}
 
 	@Override
@@ -46,6 +50,10 @@ public class ClockLogic
 		
 		time = String.valueOf(hourIn) + ":" + minute + ":" + second;
 		clockGUI.setTextOnLabel(time);
+		
+		if((alarmHour == hourIn) && (alarmMinute == minuteIn)){
+			clockGUI.alarm(true);
+		}
 	}
 
 }

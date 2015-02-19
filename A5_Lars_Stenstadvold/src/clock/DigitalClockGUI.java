@@ -26,7 +26,9 @@ public class DigitalClockGUI extends JFrame {
 	private JTextField textAlarmMinutes;
 	public JLabel lblAlarmAt;
 	public JLabel lblShowTime;
-	public String time;
+	JLabel lblAlarmIcon;
+	private JLabel lblTime4Tele;
+	private JLabel lblAllTeletubies;
 	
 	
 	
@@ -53,6 +55,7 @@ public class DigitalClockGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public DigitalClockGUI() {
+		setTitle("teletubby o'clock");
 		
 		//clockLogic = new ClockLogic(this);
 		
@@ -112,10 +115,37 @@ public class DigitalClockGUI extends JFrame {
 		lblAlarmAt.setBounds(221, 229, 113, 16);
 		contentPane.add(lblAlarmAt);
 		
-		lblShowTime = new JLabel("New label");
+		lblShowTime = new JLabel("00:00:00");
+		lblShowTime.setForeground(Color.BLACK);
+		lblShowTime.setBackground(Color.WHITE);
+		lblShowTime.setFont(new Font("SansSerif", Font.PLAIN, 32));
 		lblShowTime.setHorizontalAlignment(SwingConstants.CENTER);
-		lblShowTime.setBounds(89, 89, 179, 48);
+		lblShowTime.setBounds(221, 158, 179, 48);
 		contentPane.add(lblShowTime);
+		
+		lblAlarmIcon = new JLabel("");
+		lblAlarmIcon.setIcon(new ImageIcon(DigitalClockGUI.class.getResource("/images/alarmclock40.jpg")));
+		lblAlarmIcon.setBounds(72, 187, 61, 48);
+		lblAlarmIcon.setVisible(false);
+		contentPane.add(lblAlarmIcon);
+		
+		lblTime4Tele = new JLabel("TIME 4 TELETUBBIES!!!");
+		lblTime4Tele.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTime4Tele.setFont(new Font("Casual", Font.PLAIN, 24));
+		lblTime4Tele.setBounds(113, 6, 287, 36);
+		contentPane.add(lblTime4Tele);
+		lblTime4Tele.setVisible(false);
+		
+		lblAllTeletubies = new JLabel("New label");
+		lblAllTeletubies.setIcon(new ImageIcon(DigitalClockGUI.class.getResource("/images/time4teletubbies.jpg")));
+		lblAllTeletubies.setBounds(0, 0, 400, 378);
+		contentPane.add(lblAllTeletubies);
+		lblAllTeletubies.setVisible(false);
+		
+		JLabel lblPIC = new JLabel("");
+		lblPIC.setIcon(new ImageIcon(DigitalClockGUI.class.getResource("/images/popoPIC.jpg")));
+		lblPIC.setBounds(0, 0, 400, 378);
+		contentPane.add(lblPIC);
 	
 	}
 	
@@ -130,7 +160,9 @@ public class DigitalClockGUI extends JFrame {
 	}
 	
 	public void alarm(boolean activate){
+		lblTime4Tele.setVisible(activate);
+		lblAllTeletubies.setVisible(activate);
+		lblAlarmIcon.setVisible(!activate);
 		
 	}
-
 }
