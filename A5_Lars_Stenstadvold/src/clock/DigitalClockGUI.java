@@ -21,11 +21,12 @@ import java.awt.event.ActionEvent;
 public class DigitalClockGUI extends JFrame {
 
 	private JPanel contentPane;
-	private ClockLogic clockLogic;
+	private ClockLogic clockLogic = new ClockLogic(this);;
 	private JTextField textAlarmHours;
 	private JTextField textAlarmMinutes;
 	public JLabel lblAlarmAt;
 	public JLabel lblShowTime;
+	public String time;
 	
 	
 	
@@ -52,7 +53,8 @@ public class DigitalClockGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public DigitalClockGUI() {
-		clockLogic = new ClockLogic(this);
+		
+		//clockLogic = new ClockLogic(this);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 400);
@@ -115,11 +117,19 @@ public class DigitalClockGUI extends JFrame {
 		lblShowTime.setBounds(89, 89, 179, 48);
 		contentPane.add(lblShowTime);
 		
-		
+		//lblShowTime.setText(time);
+		//lblShowTime.setText(clockLogic.getTimeTest());
+		//System.out.println(clockLogic.getTimeTest());
 	}
 	
-	public void setTextOnLabel(String time){
-		lblShowTime.setText(time);
+	
+	
+	public void setTextOnLabel(String timeIn){
+		lblShowTime.setText(timeIn);
+	}
+	
+	public void setAlarmText(String alarmTime){
+		lblAlarmAt.setText(alarmTime);
 	}
 	
 	public void alarm(boolean activate){

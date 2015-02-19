@@ -5,10 +5,10 @@ import java.util.Calendar;
 public class ClockThread extends Thread
 	implements ClockInterface{
 	
-	ClockInterface clockInterface;
-
-	ClockThread(ClockInterface ci){
-		clockInterface = ci;
+	private ClockInterface clockInterface;
+	
+	public ClockThread(ClockInterface ci){
+		this.clockInterface = ci;
 	}
 	
 	@Override
@@ -24,7 +24,6 @@ public class ClockThread extends Thread
 			   try {
 				Thread.sleep(900);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		   }
