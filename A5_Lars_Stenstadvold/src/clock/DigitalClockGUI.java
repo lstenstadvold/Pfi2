@@ -116,10 +116,7 @@ public class DigitalClockGUI extends JFrame {
 		lblShowTime.setHorizontalAlignment(SwingConstants.CENTER);
 		lblShowTime.setBounds(89, 89, 179, 48);
 		contentPane.add(lblShowTime);
-		
-		//lblShowTime.setText(time);
-		//lblShowTime.setText(clockLogic.getTimeTest());
-		//System.out.println(clockLogic.getTimeTest());
+	
 	}
 	
 	

@@ -28,21 +28,25 @@ public class ClockLogic
 
 	@Override
 	public void update(int hourIn, int minuteIn, int secondIn) {
-		//setTimeTest(String.valueOf(hourIn) + ":" + String.valueOf(minuteIn) + ":" + String.valueOf(secondIn));
-		String time = String.valueOf(hourIn) + ":" + String.valueOf(minuteIn) + ":" + String.valueOf(secondIn);
+		String time;
+		String minute;
+		String second;
+		
+		if(minuteIn<10){
+			minute = "0" + String.valueOf(minuteIn);
+		}else{
+			minute = String.valueOf(minuteIn);
+		}
+		
+		if(secondIn <10){
+			second = "0" + String.valueOf(secondIn);
+		}else{
+			second = String.valueOf(secondIn);
+		}
+		
+		time = String.valueOf(hourIn) + ":" + minute + ":" + second;
 		clockGUI.setTextOnLabel(time);
-		//clockGUI.setTextOnLabel(String.valueOf(hourIn) + ":" + String.valueOf(minuteIn) + ":" + String.valueOf(secondIn));
-	}
-/**
- * I've been trying every way my tiny brain can think of to solve this nullpointer but I reall don't get it :(
- * It seems like the thread is working, I just can't get it to update the way it should.
-	public String getTimeTest() {
-		return timeTest;
 	}
 
-	public void setTimeTest(String timeTestIn) {
-		this.timeTest = timeTestIn;
-	}
-**/
 }
 	
