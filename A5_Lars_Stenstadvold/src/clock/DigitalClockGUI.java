@@ -164,5 +164,6 @@ public class DigitalClockGUI extends JFrame {
 		lblAllTeletubies.setVisible(activate);
 		lblAlarmIcon.setVisible(!activate);
 		
+		
 	}
 }
