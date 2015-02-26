@@ -1,0 +1,44 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1344\cocoasubrtf720
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red30\green93\blue28;\red0\green0\blue0;\red255\green255\blue255;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11200\viewh10720\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 XML fr\'e5gor - Lars Stenstadvold\
+\
+1. Fr\'e5n Malm\'f6 till Lund\
+\
+2. 
+\f1\fs26 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 selPointFr    departure point name|id|type\
+\pard\pardeftab720
+\cf2   selPointTo    destination point name|id|type\
+  NoOf          [Optional] No of journeys in result\
+\
+?cmdaction=next&selPointFr=0|80000|0&selPointTo=0|81216|0&NoOf=5\
+\
+
+\f0\fs24 \cf0 3. <Journeys> //inneh\'e5ller alla journeys man har s\'f6kt f\'f6r\
+	<Journey> //inneh\'e5ller information om en journey, t ex departure time, nr of changes, prices osv\
+		<RouteLinks> //inneh\'e5ller en eller fler RouteLink\
+			<RouteLink> //inneh\'e5ller info om routen som From (avg\'e5ngsstation), To, och Line\
+			</RouteLink>\
+		</RouteLinks>\
+	</Journey>\
+<Journeys>\
+\
+4. <NoOfChanges> finns inom <Journey>\
+\
+5. 
+\f1 \cf3 \cb4 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec3 <?xml version="1.0"?>\
+\
+<contact-info>\
+<name>Jane Smith</name>\
+<company>AT&amp;T</company>\
+<phone>(212) 555-4567</phone>\
+</contact-info>\
+
+\f0 \cf0 \cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2  }
