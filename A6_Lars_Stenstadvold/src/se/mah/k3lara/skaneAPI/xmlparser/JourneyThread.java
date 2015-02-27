@@ -17,12 +17,14 @@ public class JourneyThread extends Thread {
 	}
 
 	public void run(){
-		
-		String searchURL = Constants.getURL(gui.textField_1.getText(),gui.textField_2.getText(),1);//Malm� C = 80000,  Lund C, 81216 Malm� Gatorg 80100, H�ssleholm C 93070
+		//takes in text from GUI - from-station code and to-station code, and returns 1 search result
+		String searchURL = Constants.getURL(gui.textFieldFrom.getText(),gui.textFieldTo.getText(),1);//Malm� C = 80000,  Lund C, 81216 Malm� Gatorg 80100, H�ssleholm C 93070
 		Journeys journeys = Parser.getJourneys(searchURL);
 		
+		//loops through the list (that is one item long) that is parsed from getJourneys(searchURL) and prints 
+		//all available information
 		for (Journey journey : journeys.getJourneys()) {
-			gui.textAreaJourneys.append(journey.getStartStation()+" - " + journey.getEndStation());
+			gui.textAreaJourneys.setText(journey.getStartStation()+" - " + journey.getEndStation());
 			String time = journey.getDepDateTime().get(Calendar.HOUR_OF_DAY)+":"+journey.getDepDateTime().get(Calendar.MINUTE);
 			
 			gui.textAreaJourneys.append(" Departs " + time +" that is in "+journey.getTimeToDeparture()+ " minutes. And it is "+journey.getDepTimeDeviation()+" min late\n");

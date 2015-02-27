@@ -20,10 +20,11 @@ public class StationThread extends Thread {
 	public void run(){
 		
 		ArrayList<Station> searchStations = new ArrayList<Station>(); 
-		searchStations.addAll(Parser.getStationsFromURL(gui.textField.getText()));
+		searchStations.addAll(Parser.getStationsFromURL(gui.textFieldStation.getText()));
+		
 		for (Station s: searchStations){
-			//System.out.println(s.getStationName() +" number:" +s.getStationNbr());
-			gui.textArea.append(s.getStationName() +" number:" +s.getStationNbr() +"\n");
+			//loops through the stations in searchStations and prints the name and number
+			gui.textAreaStation.append(s.getStationName() +" number:" +s.getStationNbr() +"\n");
 		}
 	}
 

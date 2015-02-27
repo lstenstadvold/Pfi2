@@ -29,10 +29,10 @@ import javax.swing.JLabel;
 public class GUI extends JFrame {
 
 	private JPanel contentPane;
-	public JTextField textField;
-	public JTextArea textArea;
-	public JTextField textField_1;
-	public JTextField textField_2;
+	public JTextField textFieldStation;
+	public JTextArea textAreaStation;
+	public JTextField textFieldFrom;
+	public JTextField textFieldTo;
 	public JTextArea textAreaJourneys;
 
 	/**
@@ -62,28 +62,28 @@ public class GUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(6, 25, 294, 28);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textFieldStation = new JTextField();
+		textFieldStation.setBounds(6, 25, 294, 28);
+		contentPane.add(textFieldStation);
+		textFieldStation.setColumns(10);
 		
-		JButton btnSearch = new JButton("Search");
-		btnSearch.addActionListener(new ActionListener() {
+		JButton btnSearchStation = new JButton("Search");
+		btnSearchStation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textArea.setText("Loading :) ... \n\n");
+				textAreaStation.setText("Searching :) ... \n\n");
 				StationThread stationThread = new StationThread(GUI.this);
 				stationThread.start();
 			}
 		});
-		btnSearch.setBounds(312, 26, 117, 29);
-		contentPane.add(btnSearch);
+		btnSearchStation.setBounds(312, 26, 117, 29);
+		contentPane.add(btnSearchStation);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(6, 63, 439, 229);
 		contentPane.add(scrollPane);
 		
-		textArea = new JTextArea();
-		scrollPane.setViewportView(textArea);
+		textAreaStation = new JTextArea();
+		scrollPane.setViewportView(textAreaStation);
 		
 		JLabel lblSearchStations = new JLabel("Search Stations");
 		lblSearchStations.setBounds(6, 6, 109, 16);
@@ -94,19 +94,19 @@ public class GUI extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(17, 53, 134, 28);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		textFieldFrom = new JTextField();
+		textFieldFrom.setBounds(17, 53, 134, 28);
+		panel.add(textFieldFrom);
+		textFieldFrom.setColumns(10);
 		
 		JLabel lblSearchJourneys = new JLabel("Search Journeys");
 		lblSearchJourneys.setBounds(6, 6, 99, 16);
 		panel.add(lblSearchJourneys);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(177, 53, 134, 28);
-		panel.add(textField_2);
+		textFieldTo = new JTextField();
+		textFieldTo.setColumns(10);
+		textFieldTo.setBounds(177, 53, 134, 28);
+		panel.add(textFieldTo);
 		
 		JLabel lblFrom = new JLabel("From:");
 		lblFrom.setBounds(17, 39, 99, 16);
@@ -116,18 +116,18 @@ public class GUI extends JFrame {
 		lblTo.setBounds(177, 39, 99, 16);
 		panel.add(lblTo);
 		
-		JButton btnSearch_1 = new JButton("Search");
-		btnSearch_1.addActionListener(new ActionListener() {
+		JButton btnSearchJourney = new JButton("Search");
+		btnSearchJourney.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textAreaJourneys.setText("Loading :) \n\n");
+				textAreaJourneys.setText("Searching :) \n\n");
 				JourneyThread journeyThread = new JourneyThread(GUI.this);
 				journeyThread.start();
 
 			}
 		});
 		
-		btnSearch_1.setBounds(315, 54, 117, 29);
-		panel.add(btnSearch_1);
+		btnSearchJourney.setBounds(315, 54, 117, 29);
+		panel.add(btnSearchJourney);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(6, 83, 459, 178);
