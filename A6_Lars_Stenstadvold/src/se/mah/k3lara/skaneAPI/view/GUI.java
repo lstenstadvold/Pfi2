@@ -17,7 +17,9 @@ import se.mah.k3lara.skaneAPI.control.Constants;
 import se.mah.k3lara.skaneAPI.model.Journey;
 import se.mah.k3lara.skaneAPI.model.Journeys;
 import se.mah.k3lara.skaneAPI.model.Station;
+import se.mah.k3lara.skaneAPI.xmlparser.JourneyThread;
 import se.mah.k3lara.skaneAPI.xmlparser.Parser;
+import se.mah.k3lara.skaneAPI.xmlparser.StationThread;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -27,11 +29,11 @@ import javax.swing.JLabel;
 public class GUI extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextArea textArea;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextArea textAreaJourneys;
+	public JTextField textField;
+	public JTextArea textArea;
+	public JTextField textField_1;
+	public JTextField textField_2;
+	public JTextArea textAreaJourneys;
 
 	/**
 	 * Launch the application.
@@ -68,13 +70,9 @@ public class GUI extends JFrame {
 		JButton btnSearch = new JButton("Search");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textArea.setText("");
-				ArrayList<Station> searchStations = new ArrayList<Station>(); 
-				searchStations.addAll(Parser.getStationsFromURL(textField.getText()));
-				for (Station s: searchStations){
-					//System.out.println(s.getStationName() +" number:" +s.getStationNbr());
-					textArea.append(s.getStationName() +" number:" +s.getStationNbr() +"\n");
-				}
+				textArea.setText("Loading :) ... \n\n");
+				StationThread stationThread = new StationThread(GUI.this);
+				stationThread.start();
 			}
 		});
 		btnSearch.setBounds(312, 26, 117, 29);
@@ -118,25 +116,12 @@ public class GUI extends JFrame {
 		lblTo.setBounds(177, 39, 99, 16);
 		panel.add(lblTo);
 		
-		JButton btnSearch_1 = new JButton("search");
+		JButton btnSearch_1 = new JButton("Search");
 		btnSearch_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textAreaJourneys.setText("");
-				String searchURL = Constants.getURL(textField_1.getText(),textField_2.getText(),1);//Malm� C = 80000,  Lund C, 81216 Malm� Gatorg 80100, H�ssleholm C 93070
-				Journeys journeys = Parser.getJourneys(searchURL);
-				for (Journey journey : journeys.getJourneys()) {
-					textAreaJourneys.append(journey.getStartStation()+" - " + journey.getEndStation());
-					String time = journey.getDepDateTime().get(Calendar.HOUR_OF_DAY)+":"+journey.getDepDateTime().get(Calendar.MINUTE);
-					textAreaJourneys.append(" Departs " + time +" that is in "+journey.getTimeToDeparture()+ " minutes. And it is "+journey.getDepTimeDeviation()+" min late\n");
-					textAreaJourneys.append("Arrival time: " + journey.getArrDateTime().get(Calendar.HOUR_OF_DAY) +":"+journey.getArrDateTime().get(Calendar.MINUTE) + "\n");
-					textAreaJourneys.append("Nr of changes: " + journey.getNoOfChanges() + "\n");
-					textAreaJourneys.append("Line: " + journey.getLineOnFirstJourney() + "\n");
-					textAreaJourneys.append("Travel time: " + journey.getTravelMinutes() + " min \n");
-					textAreaJourneys.append("Nr of zones: " + journey.getNoOfZones() + "\n");
-					textAreaJourneys.append("Arrival time deviation: " + journey.getArrTimeDeviation() + " min \n");
-					
-					
-				}
+				textAreaJourneys.setText("Loading :) \n\n");
+				JourneyThread journeyThread = new JourneyThread(GUI.this);
+				journeyThread.start();
 
 			}
 		});
