@@ -6,6 +6,7 @@ public class Lines {
 		private ArrayList<Line> lines;
 		private Station station;
 		//Perhaps more variables and methods?
+		
 		/**Creates a list of departing lines from a station*/
 		public Lines(Station station) {
 			this.station = station;
