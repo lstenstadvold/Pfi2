@@ -1,7 +1,5 @@
 package se.mah.k3lara.skaneAPI.view;
 
-import java.util.Calendar;
-
 public class Update extends Thread {
 	private DeparturesGUI gui;
 	
@@ -14,7 +12,7 @@ public class Update extends Thread {
 	public void run() {
 		while (running == true){
 			try{
-				Thread.sleep(30000);
+				Thread.sleep(5000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

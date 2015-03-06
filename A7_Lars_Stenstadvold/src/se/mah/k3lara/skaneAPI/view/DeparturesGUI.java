@@ -4,16 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
-import javax.swing.JButton;
+
 
 import se.mah.k3lara.skaneAPI.control.Helpers;
 import se.mah.k3lara.skaneAPI.model.Line;
